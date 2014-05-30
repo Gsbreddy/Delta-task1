@@ -16,24 +16,25 @@ import android.widget.TextView;
 import android.os.Build;
 @SuppressWarnings("unused")
 public class MainActivity extends ActionBarActivity {
-	public final static String s="Hello_world";
+
 	public void show_message(View view)
 	{
-		Random rand = new Random();
 		TextView textview=(TextView)findViewById(R.id.name_field);
-		char temp;
-		int ran;
-		StringBuilder str =new StringBuilder(s);
-		for(int i=0;i<str.length();++i)
+		Random r = new Random();
+		char move;
+		int rand,carry=1;
+		StringBuffer str =new StringBuffer("Hello World!!");
+		for(;carry<str.length();carry++)
 		{
-			temp=str.charAt(i);
-			ran=(int)(Math.random()*str.length());
-			str.setCharAt(i,str.charAt(ran));
-			str.setCharAt(ran,temp);
+			move=str.charAt(carry);
+			rand=(int)(Math.random()*str.length());
+			str.setCharAt(carry,str.charAt(rand));
+			str.setCharAt(rand,move);
 		}
 		textview.setText(str.toString());
+		textview.setTextColor(Color.argb(r.nextInt(256), r.nextInt(256), r.nextInt(256) ,r.nextInt(256)));
 		textview.setTextSize(50);
-		textview.setTextColor(Color.argb(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256) ,rand.nextInt(256)));
+		
 	}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
